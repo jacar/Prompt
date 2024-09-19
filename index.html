@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="PromptCraft te ayuda a diseñar y crear ideas innovadoras con nuestro generador de prompts fácil de usar. Descubre cómo nuestros prompts pueden inspirar tu creatividad.">
+  <meta name="keywords" content="creador de prompts, generador de ideas, prompts creativos, inspiración, herramientas de escritura, diseño de ideas">
+  <meta name="author" content="webcincodev">
+  <link rel="canonical" href="https://www.webcincodev.com/">
+  <title>PromptCraft: Diseña y Crea Ideas Innovadoras</title>
+
+
+<html>
+<head>
+<base href="https://webcincodev.com/">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+:root {
+  --bg-color: #0d1117;
+  --text-color: #f0f2f5;
+  --header-bg: #161b22;
+  --accent-color: #009683;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  background-color: var(--header-bg);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+}
+
+.menu {
+  display: flex;
+}
+
+.menu a {
+  color: var(--accent-color);
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 8px 16px;
+  border-radius: 5px;
+  background-color: rgba(0, 150, 131, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu a:hover {
+  color: #fff;
+  background-color: var(--accent-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.description {
+  background-color: var(--header-bg);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+h1, h2 {
+  color: var(--accent-color);
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 2.2em;
+}
+
+.hero-banner {
+  position: relative;
+  overflow: hidden;
+  padding: 100px 20px;
+  margin-bottom: 30px;
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.hero-banner h1,
+.hero-banner p {
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.instructions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.instruction-item {
+  background-color: #424438;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: var(--text-color);
+}
+
+.instruction-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.instruction-item i {
+  font-size: 2em;
+  color: var(--accent-color);
+  margin-bottom: 10px;
+}
+
+.instruction-item h3 {
+  color: var(--accent-color);
+}
+
+.input-section, .output-section {
+  background-color: var(--header-bg);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+textarea, input[type="text"], select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #4a4b41;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  background-color: #35362f;
+  color: var(--text-color);
+}
+
+textarea:focus, input[type="text"]:focus, select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+button {
+  background-color: var(--accent-color);
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: #00b39b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.prompt-tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.tag {
+  background-color: #4a4b41;
+  color: var(--accent-color);
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tag:hover {
+  background-color: #5a5b51;
+}
+
+#ai-status {
+  text-align: center;
+  font-style: italic;
+  color: #a0a0a0;
+  margin-top: 10px;
+}
+
+.suggestions {
+  background-color: #424438;
+  border-left: 4px solid var(--accent-color);
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 0 4px 4px 0;
+}
+
+.social-icons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.social-icons a {
+  color: var(--accent-color);
+  font-size: 24px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #d9e36f;
+}
+
+footer {
+  background-color: var(--header-bg);
+  color: var(--text-color);
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 30px;
+}
+
+#content-type {
+  display: flex;
+  align-items: center;
+}
+
+#content-type option {
+  display: flex;
+  align-items: center;
+}
+
+#content-type option i {
+  margin-right: 5px;
+}
+
+.theme-options {
+  position: relative;
+  display: inline-block;
+}
+
+.color-options {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: var(--header-bg);
+  padding: 5px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.color-option {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: none;
+  margin: 2px;
+  cursor: pointer;
+}
+
+.theme-options:hover .color-options {
+  display: flex;
+}
+
+body.light-mode {
+  --bg-color: #f0f2f5;
+  --text-color: #0d1117;
+  --header-bg: #ffffff;
+  --accent-color: #009683;
+}
+
+body.light-mode .instruction-item {
+  background-color: #f0f2f5;
+}
+
+body.light-mode .instruction-item h3 {
+  color: var(--accent-color);
+}
+
+.prompt-examples {
+  background-color: var(--header-bg);
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 30px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.prompt-examples h3 {
+  color: var(--accent-color);
+  margin-bottom: 15px;
+}
+
+#prompt-examples-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#prompt-examples-list li {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: rgba(0, 150, 131, 0.1);
+  border-radius: 5px;
+}
+
+#back-to-top {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: var(--accent-color);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+
+#back-to-top:hover {
+  background-color: #00b39b;
+}
+
+#back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.credit-display {
+  background-color: var(--header-bg);
+  color: var(--accent-color);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+  <header class="header">
+    <img src="https://www.webcincodev.com/blog/wp-content/uploads/2024/09/logo_claro.svg" alt="WebCincoDev Logo" class="logo" id="header-logo">
+    <nav class="menu">
+      <a href="#inicio">Inicio</a>
+      <a href="#tutorial">Tutorial</a>
+      <a href="https://www.webcincodev.com/" target="_blank">Contacto</a>
+    </nav>
+    <div class="theme-options">
+      <button id="theme-toggle" class="theme-toggle">
+        <i class="fas fa-lightbulb"></i>
+      </button>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="hero-banner">
+      <video autoplay loop muted playsinline class="hero-video">
+        <source src="https://s1-def.ap4r.com/kos/s101/nlav112154/aiwp/assets/home-start-Cl-AY7KG.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="hero-content">
+        <h1>PromptCraft: Diseña tus Ideas</h1>
+        <p>Genera prompts gratis sin límites para crear imágenes impresionantes con IA</p>
+      </div>
+    </div>
+
+    <div class="description">
+      <h1>PromptCraft: Diseña tus Ideas</h1>
+      <p>Bienvenido a nuestra herramienta de generación de prompts gratis sin límites. Esta aplicación te ayuda a crear, editar y optimizar prompts para generar imágenes impresionantes con IA.</p>
+      
+      <div class="instructions-grid">
+        <div class="instruction-item">
+          <i class="fas fa-lightbulb"></i>
+          <h3>Inspírate</h3>
+          <p>Ingresa una idea inicial o usa la inspiración aleatoria para comenzar.</p>
+        </div>
+        <div class="instruction-item">
+          <i class="fas fa-magic"></i>
+          <h3>Mejora</h3>
+          <p>Enriquece tu prompt con etiquetas sugeridas o usa el botón de optimización.</p>
+        </div>
+        <div class="instruction-item">
+          <i class="fas fa-edit"></i>
+          <h3>Personaliza</h3>
+          <p>Edita manualmente tu prompt para ajustarlo a tu visión creativa.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="credit-display">
+      <p>Créditos restantes: <span id="credits-remaining">50</span></p>
+    </div>
+
+    <div class="tutorial-section" id="tutorial">
+      <h2>Tutorial: Cómo usar PromptCraft</h2>
+      <ol>
+        <li>Selecciona el tipo de contenido que deseas crear en el menú desplegable.</li>
+        <li>Escribe tu idea inicial en el campo de texto o usa el botón "Inspírame" para obtener una sugerencia aleatoria.</li>
+        <li>Haz clic en "Crear Prompt IA" para generar un prompt basado en tu idea.</li>
+        <li>Utiliza los botones "Refinar Prompt", "Mejorar Prompt" o "Analizar Prompt" para ajustar y optimizar tu prompt.</li>
+        <li>Una vez satisfecho, usa el botón "Copiar Prompt" para copiarlo al portapapeles.</li>
+      </ol>
+    </div>
+    
+    <div class="input-section">
+      <h2>Enciende tu Imaginación</h2>
+      <select id="content-type">
+        <option value="image"> Imagen</option>
+        <option value="text"> Texto</option>
+        <option value="video"> Video</option>
+        <option value="story"> Historia</option>
+        <option value="book"> Libro</option>
+        <option value="web"> Sitio Web</option>
+        <option value="news"> Noticias</option>
+      </select>
+      <input type="text" id="user-input" placeholder="Describe tu idea aquí">
+      <div class="prompt-tags">
+        <span class="tag" onclick="addTag('fotorrealista')">fotorrealista</span>
+        <span class="tag" onclick="addTag('resolución 8K')">resolución 8K</span>
+        <span class="tag" onclick="addTag('iluminación cinematográfica')">iluminación cinematográfica</span>
+        <span class="tag" onclick="addTag('hiperdetallado')">hiperdetallado</span>
+      </div>
+      <button onclick="generatePrompt()"><i class="fas fa-robot"></i> Crear Prompt IA</button>
+      <button onclick="randomPrompt()"><i class="fas fa-random"></i> Inspírame</button>
+    </div>
+    
+    <div class="output-section">
+      <h2>Tu Prompt Creado</h2>
+      <textarea id="prompt-output" rows="5" readonly=""></textarea>
+      <button onclick="editPrompt()"><i class="fas fa-pencil-alt"></i> Refinar Prompt</button>
+      <button onclick="optimizePrompt()"><i class="fas fa-star"></i> Mejorar Prompt</button>
+      <button onclick="analyzePrompt()"><i class="fas fa-search"></i> Analizar Prompt</button>
+      <button onclick="copyPrompt()"><i class="fas fa-copy"></i> Copiar Prompt</button>
+    </div>
+    
+    <div class="prompt-examples">
+      <h3>Ejemplos de Prompts</h3>
+      <ul id="prompt-examples-list"></ul>
+    </div>
+    
+    <div id="ai-status"></div>
+    <div class="suggestions" id="suggestions"></div>
+  </div>
+
+  <div class="social-icons">
+    <a href="https://api.whatsapp.com/send?phone=+573052891719&text=Quiero%20informaci%C3%B3n..." target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.instagram.com/webcincodev/?next=%2F" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.webcincodev.com/" target="_blank"><i class="fas fa-globe"></i></a>
+    <a href="https://www.webcincodev.com/blog/" target="_blank"><i class="fas fa-blog"></i></a>
+  </div>
+
+  <footer>
+    <p>Copyright © 2024 WebCincoDev</p>
+  </footer>
+  
+  <a href="#" id="back-to-top" title="Volver arriba">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <script>
+    let userCredits = 50;
+    let userIP = '';
+
+    async function getUserIP() {
+      const ip = Array(4).fill(0).map(() => Math.floor(Math.random() * 256)).join('.');
+      return ip;
+    }
+
+    function updateCreditDisplay() {
+      document.getElementById('credits-remaining').textContent = userCredits;
+    }
+
+    function setAIStatus(message, isLoading = false) {
+      const status = document.getElementById('ai-status');
+      status.innerHTML = isLoading ? `<i class="fas fa-spinner fa-spin"></i> ${message}` : message;
+    }
+
+    function addTag(tag) {
+      const input = document.getElementById('user-input');
+      input.value += (input.value ? ', ' : '') + tag;
+    }
+
+    async function generatePrompt() {
+      if (userCredits <= 0) {
+        setAIStatus("Lo siento, no tienes créditos suficientes para generar un prompt.");
+        return;
+      }
+
+      const contentType = document.getElementById('content-type').value;
+      const input = document.getElementById('user-input').value;
+      const output = document.getElementById('prompt-output');
+      
+      setAIStatus(`Creando tu prompt de ${contentType}...`, true);
+      
+      userCredits--;
+      updateCreditDisplay();
+      
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      let aiGeneratedPrompt;
+      switch(contentType) {
+        case 'image':
+          aiGeneratedPrompt = `Un ${input}, con detalles intrincados y elementos surrealistas. La escena está bañada en un suave resplandor etéreo, creando una atmósfera onírica.`;
+          break;
+        case 'text':
+          aiGeneratedPrompt = `Escribe un artículo sobre ${input}, utilizando un tono informativo y atractivo. Incluye datos relevantes y ejemplos ilustrativos.`;
+          break;
+        case 'video':
+          aiGeneratedPrompt = `Crea un guion para un video corto sobre ${input}. Incluye descripciones de escenas, diálogos y efectos visuales sugeridos.`;
+          break;
+        case 'story':
+          aiGeneratedPrompt = `Escribe una historia corta inspirada en ${input}. Desarrolla personajes interesantes y una trama cautivadora.`;
+          break;
+        case 'book':
+          aiGeneratedPrompt = `Genera un esquema para un libro sobre ${input}. Incluye títulos de capítulos y breves descripciones de cada sección.`;
+          break;
+        case 'web':
+          aiGeneratedPrompt = `Diseña una estructura de sitio web para ${input}. Incluye secciones principales, características clave y sugerencias de diseño.`;
+          break;
+        case 'news':
+          aiGeneratedPrompt = `Escribe un artículo de noticias sobre ${input}. Incluye detalles relevantes, citas de expertos y el impacto potencial del evento.`;
+          break;
+      }
+      
+      output.value = aiGeneratedPrompt;
+      setAIStatus(`¡Tu prompt de ${contentType} ha sido creado!`);
+      suggestEnhancements();
+    }
+
+    async function randomPrompt() {
+      const output = document.getElementById('prompt-output');
+      
+      setAIStatus("Conjurando un prompt aleatorio...", true);
+      
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      const randomPrompts = [
+        "Un paisaje urbano retrofuturista inspirado en Art Deco en Marte, con edificios de cromo elegantes y vehículos flotantes contra un cielo rojo óxido.",
+        "Un bosque bioluminiscente al atardecer, con flora alienígena y criaturas etéreas, pintado en el estilo de Avatar mezclado con Studio Ghibli.",
+        "Una instalación de investigación submarina steampunk, con submarinos de la era victoriana y criaturas marinas mecánicas, todo renderizado en un estilo fotorrealista."
+      ];
+      
+      output.value = randomPrompts[Math.floor(Math.random() * randomPrompts.length)];
+      setAIStatus("¡Prompt aleatorio generado!");
+      suggestEnhancements();
+    }
+
+    function copyPrompt() {
+      const output = document.getElementById('prompt-output');
+      output.select();
+      document.execCommand('copy');
+      setAIStatus("Prompt copiado al portapapeles!");
+    }
+
+    function editPrompt() {
+      const output = document.getElementById('prompt-output');
+      output.readOnly = false;
+      output.focus();
+      setAIStatus("Modo de edición activado. Refina tu prompt directamente en el área de texto.");
+    }
+
+    async function optimizePrompt() {
+      const output = document.getElementById('prompt-output');
+      
+      setAIStatus("Mejorando tu prompt...", true);
+      
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      const optimizedPrompt = output.value + ", magistralmente elaborado con una composición impecable, iluminación cinematográfica y detalles fotorrealistas. Resolución 8K, tendencia en ArtStation, arte digital galardonado.";
+      
+      output.value = optimizedPrompt;
+      setAIStatus("¡Tu prompt ha sido mejorado!");
+      suggestEnhancements();
+    }
+
+    async function analyzePrompt() {
+      const output = document.getElementById('prompt-output');
+      const suggestions = document.getElementById('suggestions');
+      
+      setAIStatus("Analizando tu prompt...", true);
+      
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      const wordCount = output.value.split(' ').length;
+      let strength = "Moderada";
+      let tip = "Considera añadir más detalles específicos o referencias de estilo artístico.";
+      
+      if (wordCount < 10) {
+        strength = "Débil";
+        tip = "Tu prompt es bastante corto. Intenta añadir más elementos descriptivos para guiar mejor a la IA.";
+      } else if (wordCount > 30) {
+        strength = "Fuerte";
+        tip = "Tu prompt es detallado, ¡lo cual es genial! Solo asegúrate de que no sea demasiado restrictivo para la IA.";
+      }
+      
+      suggestions.innerHTML = `<h3>Análisis del Prompt</h3>
+        <p><i class="fas fa-word"></i> Número de palabras: ${wordCount}</p>
+        <p><i class="fas fa-fist-raised"></i> Fuerza: ${strength}</p>
+        <p><i class="fas fa-lightbulb"></i> Consejo: ${tip}</p>`;
+      setAIStatus("¡Análisis completado!");
+    }
+
+    async function suggestEnhancements() {
+      const suggestions = document.getElementById('suggestions');
+      
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      const enhancementSuggestions = [
+        "Considera especificar un estilo artístico particular (ej., pintura al óleo, arte digital, acuarela)",
+        "Añade detalles atmosféricos como la hora del día o condiciones climáticas",
+        "Incluye descripciones específicas de iluminación (ej., luz ambiental suave, sombras duras)",
+        "Menciona la perspectiva de la cámara o tipo de toma (ej., primer plano, vista de pájaro)"
+      ];
+      
+      suggestions.innerHTML = `<h3>Sugerencias de Mejora</h3>
+        <ul>
+          ${enhancementSuggestions.map(suggestion => `<li><i class="fas fa-check-circle"></i> ${suggestion}</li>`).join('')}
+        </ul>`;
+    }
+
+    function updatePromptExamples() {
+      const examplesList = document.getElementById('prompt-examples-list');
+      const examples = [
+        "Un dragón de cristal volando sobre una ciudad futurista",
+        "Retrato de una anciana sabia con ojos que brillan como galaxias",
+        "Un bosque encantado donde las hojas son páginas de libros antiguos",
+        "Una tormenta de arena en Marte vista desde la ventana de una colonia",
+        "Un reloj steampunk que muestra el paso del tiempo en dimensiones alternativas"
+      ];
+      
+      examplesList.innerHTML = examples.map(example => `<li>${example}</li>`).join('');
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      userIP = await getUserIP();
+      updateCreditDisplay();
+      updatePromptExamples();
+    });
+
+    function updateLogo() {
+      if (body.classList.contains('light-mode')) {
+        headerLogo.src = 'https://www.webcincodev.com/blog/wp-content/uploads/2024/09/logo_black.svg';
+      } else {
+        headerLogo.src = 'https://www.webcincodev.com/blog/wp-content/uploads/2024/09/logo-white.svg';
+      }
+    }
+
+    const themeToggle = document.getElementById('theme-toggle');
+    const colorOptions = document.querySelectorAll('.color-option');
+    const body = document.body;
+    const headerLogo = document.getElementById('header-logo');
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('light-mode');
+      const icon = themeToggle.querySelector('i');
+      if (body.classList.contains('light-mode')) {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      } else {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      }
+      updateLogo();
+    });
+
+    updateLogo();
+
+    document.querySelectorAll('.menu a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        let targetElement;
+        
+        if (targetId === 'inicio') {
+          targetElement = document.body;
+        } else {
+          targetElement = document.getElementById(targetId);
+        }
+        
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    const backToTopButton = document.getElementById("back-to-top");
+
+    window.addEventListener("scroll", () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add("show");
+      } else {
+        backToTopButton.classList.remove("show");
+      }
+    });
+
+    backToTopButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+
+</body></html>
